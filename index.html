@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>T-NoteList</title>
+  
+  <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <!-- <link rel="stylesheet" href="assets/css/Login.css"> -->
+  <link href="https://fonts.googleapis.com/css?family=PT+Serif&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Indie+Flower|PT+Serif&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Indie+Flower|PT+Serif|Shadows+Into+Light&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Indie+Flower|PT+Serif|Satisfy|Shadows+Into+Light&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+      
+    <link rel="stylesheet" href="assets\css\index1.css"/>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css'>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+
+    <!-- <link rel="stylesheet" href="assets/css/PWA-NotesList-calendar.css"> -->
+    <!-- <link rel="stylesheet" href="assets/css/table.css"> -->
+    <link rel="manifest" href="/manifest.json">
+     <!-- <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'> -->
+
+     <!-- <link rel="stylesheet" href="assets/css/PWA-NotesList-calendar.css"> -->
+     <link rel="stylesheet" href="assets/css/menu-content.css">
+     <link rel="stylesheet" href="assets/css/content_stickynote.css">
+
+     <link rel="manifest" href="/manifest.json">
+     <!-- ios support -->
+     <link rel="manifest" href="/assets/img/icons">
+     <meta name="apple-mobile-web-app-status-bar" content="#aa7700">
+     <meta name="theme-color" content="#FFE1C4">
+
+     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+        <nav class="menu" tabindex="0">
+            <div class="smartphone-menu-trigger"></div>
+              <header class="avatar">
+                    <img src="https://s3.amazonaws.com/uifaces/faces/twitter/kolage/128.jpg" />
+                <h2>John D.</h2>
+              </header>
+                <ul>
+                <li tabindex="0" class="icon-dashboard"><span>Dashboard</span></li>
+                <li tabindex="0" class="icon-customers"><span>Customers</span></li>
+                <li tabindex="0" class="icon-users"><span>Users</span></li>
+                <li tabindex="0" class="icon-settings"><span>Settings</span></li>
+              </ul>
+        </nav>
+        <div class="container">
+                <!-- <div class="helper">
+                  RESIZE THE WINDOW
+                      <span>Breakpoints on 900px and 400px</span>
+                </div> -->
+              
+                      <!--  Tasks List  -->
+                      <div class="notes-wrapper">
+                            <div class="saver-wrap" contenteditable="false">
+                                <div class="notes-dot" contenteditable="false"></div>
+                                <div class="rest" contenteditable="false"></div>
+                            </div>
+                            <div class="title" contenteditable="true" onpaste="OnPaste_StripFormatting(this, event);">
+                                note title
+                            </div>
+                            <div class="content" contenteditable="true" onpaste="OnPaste_StripFormatting(this, event);">
+                            Start typing...
+                            </div>
+                            <div class="line"></div>
+                            <div class="comment"></div>
+                            <input type="file" onchange="previewFile()" id="selectedFile" style="display: none;" />
+                            <div class="getImg" onclick="document.getElementById('selectedFile').click();">
+                                <i class="material-icons">insert_photo</i>
+                            </div>
+                       
+                    </div>
+          
+
+
+       </div>
+       
+           
+              <!-- <div class="helper">
+                RESIZE THE WINDOW
+                    <span>Breakpoints on 900px and 400px</span>
+              </div> -->
+       
+            <!-- <main ng-app="TaskList" ng-controller="taskController">
+                    <form name="form" ng-submit="addTask()">
+                    <div>
+                        <input type="text" name="task" placeholder="Add a new task" ng-model="newTask" required="required"/>
+                        <button ng-disabled="form.$invalid">Add task</button>
+                    </div>
+                    </form>
+                    <ul>
+                    <li class="fade" ng-repeat="task in tasks" ng-class="{'completed':task.done}"> <span>{{task.title}}
+                        <input type="checkbox" ng-attr-id="{{'task-'+$index}}" ng-model="task.done"/>
+                        <label ng-attr-for="{{'task-'+$index}}"></label></span></li>
+                    </ul>
+                    <p class="fade all-complete" ng-show="!(tasks | filter:title).length">All tasks have been completed.</p>
+                    <button ng-click="clearCompleted()">Clear completed tasks</button>
+              
+            </main> -->
+
+            <!-- <template id="single-note">
+              <section> 
+                <div class="col-md-4 col-sm-6" v-for="(oneNote, i) in allNotes" :key="oneNote.i">
+                  <div v-if="oneNote.text.includes(searchKey)" class="single-note" v-bind:class="[oneNote.color]">
+                    <span @click="finishTask(i)" class="notDone"><i :class="{far: !oneNote.completed, fas: oneNote.completed}" class="fa-check-square"></i></span>
+                    <div v-if="edit && editId == i">
+                      <input  type="text" autofocus="true" placeholder="Type a title ..." v-model="oneNote.title" />
+                    </div>
+                    <div v-else>
+                      <h2  :class="{isDone: oneNote.completed}" >{{oneNote.title}} </h2>
+                    </div>
+                    
+                    <small>Last update: {{oneNote.date}}</small>
+                    <hr>
+                    <textarea v-if="edit && editId == i" placeholder="Type a description ..." v-model="oneNote.text"></textarea>
+                    <p v-else :class="{expand: idToExpand == i, isDone: oneNote.completed}" v-html="modifiedText(i)"></p>
+                    <div class="meta">
+                      <span v-if="edit && editId == i" @click="updateNote(i, oneNote)"><i class="fas fa-check"></i></span>
+                      <span v-else @click=editNote(i)><i class="fas fa-pencil-alt"></i></span>
+                      <span @click="toggleTransition(i)"><i class="fas fa-palette"></i></span>
+                      <span @click="deleteNote(i)"><i class="far fa-trash-alt"></i></span>
+                      <span v-if="oneNote.long" @click="expandNote(i)"><i class="fas fa-expand"></i></span>
+                      <span @click="copyLink(i)"><i class="fas fa-link"></i></span>
+                    </div>
+                    <div class="colors" :class="{openDivs: currentID == i}">
+                      <div @click="changeColor(i, 'blue')" class="circle blue" :class="{selected: oneNote.color == 'blue'}"></div>
+                      <div @click="changeColor(i, 'yellow')" class="circle yellow" :class="{selected: oneNote.color == 'yellow'}"></div>
+                      <div @click="changeColor(i, 'red')" class="circle red" :class="{selected: oneNote.color == 'red'}"></div>
+                      <div @click="changeColor(i, 'purple')" class="circle purple" :class="{selected: oneNote.color == 'purple'}"></div>
+                      <div @click="changeColor(i, 'white')" class="circle whiteCircle" :class="{selected: oneNote.color == 'white'}"></div>
+                    </div>
+                    <div class="copied" :class="{openDivs: idToCopy == i}">
+                      link is copied !
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </template>
+            <template id="shared-note">
+              <div class="col-md-offset-4 col-sm-offset-2 col-md-4 col-sm-8">
+                <div class="single-note shared" :class="[sharedNote.color]">
+                  <h2>{{sharedNote.title}}</h2>
+                  <small>The Date: {{sharedNote.date}}</small>
+                  <hr>
+                  <p v-html="sharedNote.text"></p>
+                </div>
+              </div>
+            </template>
+            <template id="sticky-notes">
+              <div>
+                <div class="col-md-4 col-sm-6">
+                  <div class="single-note add-note" v-bind:class="[newNote.color]">
+                    <input type="text" placeholder="Type a title ..." v-model="noteTitle">
+                    <small>Today: {{ todayDate }}</small>
+                    <hr>
+                    <textarea placeholder="Type a description ..." v-model="noteText"></textarea>
+                    <div class="meta">
+                      <span @click="toggleTransition(-1)"><i class="fas fa-palette"></i></span>
+                      <span @click="insertNote"><i class="fas fa-check"></i></span>
+                    </div>
+                    <div class="colors" :class="{openDivs: currentID == -1}">
+                      <div @click="noteColor = 'blue'" class="circle blue" :class="{selected: newNote.color == 'blue'}"></div>
+                      <div @click="noteColor = 'yellow'" class="circle yellow" :class="{selected: newNote.color == 'yellow'}"></div>
+                      <div @click="noteColor = 'red'" class="circle red" :class="{selected: newNote.color == 'red'}"></div>
+                      <div @click="noteColor = 'purple'" class="circle purple" :class="{selected: newNote.color == 'purple'}"></div>
+                      <div @click="noteColor = 'white'" class="circle whiteCircle" :class="{selected: newNote.color == 'white'}"></div>
+                    </div>
+                  </div>
+                </div>
+                <single-note :all-notes="theNotes"></single-note>
+              </div>
+            </template>
+            
+            <div id="app">
+              <div class="header" id="header" :class="{hash: isHashtag}">
+                <div class="container">
+                  <div class="col-md-3 col-sm-5">
+                    <a href="index.html">
+                      <h2 v-if="isHashtag">#{{isHashtag}}</h2>
+                      <h2 v-else>Sticky Notes</h2>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div id="notes" class="notes">
+                <div class="container">
+                  <sticky-notes />
+                </div>
+              </div>
+            </div>  -->
+
+                        <!-- page-wrapper -->
+                    
+                               
+                            <div  data-toggle="tooltip" data-placement="left" id="back-to-top" class="back-to-top" >
+                                <!--button trở về đầu trang-->
+                    
+                                <button class="btn material-icons">keyboard_arrow_up</button>      
+                            </div>    
+                  <!-- </div> -->
+
+                  <!-- <script src="https://www.gstatic.com/firebasejs/6.4.2/firebase-app.js"></script> -->
+                  <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase.js"></script>
+                  <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-app.js"></script>
+                  <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-auth.js"></script>
+                  <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-firestore.js"></script>
+                  <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-storage.js"></script>
+                  
+
+          
+                          
+
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyD17r7mphJ8Vh_rXYHG8WAHgnTfCa2RgaE",
+    authDomain: "t-notelist.firebaseapp.com",
+    databaseURL: "https://t-notelist.firebaseio.com",
+    projectId: "t-notelist",
+    storageBucket: "t-notelist.appspot.com",
+    messagingSenderId: "135435269388",
+    appId: "1:135435269388:web:768027188dd226fd79c529"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+</script>
+          <!-- <script src="https://www.gstatic.com/firebase/init.js"></script> -->
+          <script src="/app.js"></script>
+          <script src="/db.js"></script>
+        <script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <script src="login-register-master/signin.js"></script>
+        <script src="assets/js/index1.js"></script>
+        <script src="Nhiemvu/shownote_category.js"></script>
+        <link rel="stylesheet" href="Nhiemvu/menu-content.js">
+        <link rel="stylesheet" href="Nhiemvu/content_stickynote.js">
+        <!-- <link rel="stylesheet" href="assets/css/menu.css"> -->
+        <!-- <script src="assets/js/menu.js"></script> -->
+</body>
+</html>
